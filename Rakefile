@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "sync-s3-gem"
   gem.homepage = "http://github.com/uokesita/sync-s3-gem"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{This rake task will update (delete and copy) all the files under /public on s3, be patient}
+  gem.description = %Q{This rake task will update (delete and copy) all the files under /public on s3, be patient}
   gem.email = "osledybazo@gmail.com"
   gem.authors = ["Osledy Bazo"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
@@ -51,3 +51,7 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+$LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
+require 'sync-s3-gem'
+

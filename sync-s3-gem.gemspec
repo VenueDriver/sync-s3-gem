@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/sync-s3-gem.rb",
     "lib/tasks/sync_aws3_public_assets.rake",
     "rails/init.rb",
+    "sync-s3-gem.gemspec",
     "syncs3gem/railtie.rb",
     "test/helper.rb",
     "test/test_sync-s3-gem.rb"

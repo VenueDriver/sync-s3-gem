@@ -54,4 +54,4 @@ end
 
 $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
 require 'sync-s3-gem'
-
+Dir['lib/tasks/**/*.rake'].each { |t| load t }

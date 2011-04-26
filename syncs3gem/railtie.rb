@@ -5,7 +5,7 @@ module Syncs3gem
     require 'rails'
     class Railtie < Rails::Railtie
       rake_tasks do
-        load "tasks/sync_aws3_public_assets.rake"
+        load "lib/tasks/sync_aws3_public_assets.rake"
       end
     end
   end

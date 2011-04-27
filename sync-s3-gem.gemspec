@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sync-s3-gem}
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Osledy Bazo"]
-  s.date = %q{2011-04-26}
+  s.date = %q{2011-04-27}
   s.description = %q{This rake task will update (delete and copy) all the files under /public on s3, be patient}
   s.email = %q{osledybazo@gmail.com}
   s.extra_rdoc_files = [
@@ -25,11 +25,11 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "init.rb",
+    "lib/railtie.rb",
     "lib/sync-s3-gem.rb",
     "lib/tasks/sync_aws3_public_assets.rake",
     "rails/init.rb",
     "sync-s3-gem.gemspec",
-    "syncs3gem/railtie.rb",
     "test/helper.rb",
     "test/test_sync-s3-gem.rb"
   ]

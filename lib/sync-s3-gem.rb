@@ -1,3 +1,1 @@
-if defined?(Rails.root) && Rails.root
-  Dir['tasks/**/*.rake'].each { |t| load t }
-end
+require 'sync-s3-gem/railtie' if defined?(Rails)

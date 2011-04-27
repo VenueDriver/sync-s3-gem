@@ -31,7 +31,7 @@ namespace :sync_s3 do
   end
 
   def upload_file asset, file
-    asset == "/" ? (file_name = file) : (file_name = "#{asset}/#{file}".sub '/', '')
+    file_name   = asset == "/" ? file : "#{asset}/#{file}".sub('/','')
     remote_file = get_remote_file(file_name)
 
     if check_timestamps(file_name, remote_file)

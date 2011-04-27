@@ -1,0 +1,7 @@
+This rake task will update (delete and copy) all the files under /public on s3, be patient
+
+In your Gemfile
+  gem 'sync-s3-gem'
+
+In your Rakefile
+  Dir["#{Gem.searcher.find('sync-s3-gem').full_gem_path}/lib/tasks/**/*.rake"].each { |ext| load ext }

@@ -15,10 +15,10 @@ namespace :sync_s3 do
                              :persistent            => false )
     @directory = @fog.directories.create( :key => @settings['aws_bucket_name'] )
 
-    upload_directory('/')
+    upload_directory
   end
 
-  def upload_directory(asset)
+  def upload_directory(asset='/')
     Dir.entries(File.join(Rails.root, 'public', asset)).each do |file|
       next if file =~ /\A\./
       
@@ -31,23 +31,13 @@ namespace :sync_s3 do
   end
 
   def upload_file asset, file
-    if asset == "/"
-      remote_file = get_remote_file(file)
-      
-      if check_timestamps(file, remote_file)
-        destroy_file(remote_file)
-        file_u = @directory.files.create(:key => "#{file}", :body => open(File.join(Rails.root, 'public', asset, file )), :public => true ) 
-        puts "copied #{file}"
-      end
-    else
-      file_name = "#{asset}/#{file}".sub '/', ''
-      remote_file = get_remote_file(file_name)
+    asset == "/" ? (file_name = file) : (file_name = "#{asset}/#{file}".sub '/', '')
+    remote_file = get_remote_file(file_name)
 
-      if check_timestamps(file_name, remote_file)
-        destroy_file(remote_file)
-        file_u = @directory.files.create(:key => "#{file_name}", :body => open(File.join(Rails.root, 'public', asset, file )), :public => true )
-        puts "copied #{file_name}"
-      end
+    if check_timestamps(file_name, remote_file)
+      destroy_file(remote_file)
+      file_u = @directory.files.create(:key => "#{file_name}", :body => open(File.join(Rails.root, 'public', asset, file )), :public => true )
+      puts "copied #{file_name}"
     end
   end
 
